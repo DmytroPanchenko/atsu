@@ -1,0 +1,64 @@
+/* block specific CSS goes here */
+
+main .hero-container {
+  padding: 0;
+}
+
+@media (min-width: 900px) {
+  .section > div.hero-wrapper {
+    max-width: unset;
+  }
+}
+
+main .hero {
+  position: relative;
+  padding: 32px;
+  min-height: 360px;
+}
+
+main .hero div {
+  font-family: var(--museo-font-family);
+  font-weight: 500;
+  font-size: var(--heading-font-size-m);
+  color: var(--overlay-text-color);
+}
+
+main .hero h1 {
+  font-size: var(--heading-font-size-xxl);
+  margin-top: 0;
+}
+
+main .hero picture {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+/* The overlay using ::before pseudo-element */
+.hero.block > div:not(.textcontent) > div::before {
+  content: ""; /* This makes the pseudo-element render */
+  position: absolute; /* Take it out of the document flow */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; /* These four properties make it cover the entire parent */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1; /* Place it above the image, but below the text */
+}
+
+main .section .textcontent {
+  margin-top: 2em;
+  position: relative;
+  z-index: 2;
+}
+
+main .hero img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
